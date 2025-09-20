@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organic Room Spray</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { font-family: "Prompt", Arial, sans-serif; }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600180758895-7a87b22309e1') center/cover no-repeat;
+      color: white;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      background: rgba(0,0,0,0.5);
+      padding: 15px 25px;
+      border-radius: 8px;
+    }
+    .product-card { transition: transform .2s; }
+    .product-card:hover { transform: scale(1.05); }
+    footer { background: #2d4739; color: white; padding: 20px 0; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <a class="navbar-brand" href="#">Organic Room Spray</a>
+
+      <!-- ✅ เพิ่มลิงก์ไปยังเว็บอื่น (Google) -->
+      <a href="https://www.google.com" target="_blank" class="btn btn-warning ms-3">
+        🌐 ไปที่ Google
+      </a>
+
+      <!-- ปุ่มตะกร้า -->
+      <button class="btn btn-light ms-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+        🛒 ตะกร้า <span id="cart-count" class="badge bg-danger">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <h1>Organic Room Spray</h1>
+      <p>สเปรย์ดับกลิ่นห้องจากสมุนไพรธรรมชาติ ออแกนิกแท้ 100%</p>
+
+      <!-- ปุ่มเดิม -->
+      <a href="#products" class="btn btn-light btn-lg">ดูสินค้า</a>
+
+     
+    </div>
+  </section>
+
+  <!-- Product Section -->
+  <section id="products" class="container py-5">
+    <h2 class="text-center mb-4">กลิ่นยอดนิยม</h2>
+    <div class="row g-4">
+      <!-- Product 1 -->
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="https://images.unsplash.com/photo-1588159343745-445ae0b16383" class="card-img-top" alt="Lavender Spray">
+          <div class="card-body">
+            <h5 class="card-title">Lavender Calm</h5>
+            <p class="fw-bold text-success">฿250</p>
+            <button class="btn btn-success add-to-cart" data-name="Lavender Calm" data-price="250">หยิบใส่ตะกร้า</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="https://images.unsplash.com/photo-1603022378038-193de5c1aa76" class="card-img-top" alt="Eucalyptus Spray">
+          <div class="card-body">
+            <h5 class="card-title">Eucalyptus Fresh</h5>
+            <p class="fw-bold text-success">฿250</p>
+            <button class="btn btn-success add-to-cart" data-name="Eucalyptus Fresh" data-price="250">หยิบใส่ตะกร้า</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="https://images.unsplash.com/photo-1623062121052-3c53a2c7f0d1" class="card-img-top" alt="Lemon Spray">
+          <div class="card-body">
+            <h5 class="card-title">Lemon Zest</h5>
+            <p class="fw-bold text-success">฿250</p>
+            <button class="btn btn-success add-to-cart" data-name="Lemon Zest" data-price="250">หยิบใส่ตะกร้า</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">🛒 ตะกร้าสินค้า</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>สินค้า</th>
+                <th>ราคา</th>
+                <th>จำนวน</th>
+                <th>รวม</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+          </table>
+          <h5 class="text-end">ราคารวม: <span id="cart-total">0</span> บาท</h5>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+          <button class="btn btn-success" id="checkout-btn">ชำระเงิน</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Organic Room Spray | Natural & Eco-friendly</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
